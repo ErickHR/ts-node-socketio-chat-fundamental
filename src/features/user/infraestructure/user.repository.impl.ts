@@ -9,6 +9,10 @@ export default class UserRepositoryImpl implements UserRepository {
     return this.userDataSource.getAll()
   }
 
+  getAllConnectByRoom(room: string): Promise<User[]> {
+    return this.userDataSource.getAllByRoom(room)
+  }
+
   add(user: User): Promise<void> {
     return this.userDataSource.add(user)
   }

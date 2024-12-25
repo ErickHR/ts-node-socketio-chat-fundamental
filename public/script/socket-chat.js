@@ -2,7 +2,7 @@ const socket = io()
 
 const params = new URLSearchParams(window.location.search)
 
-if (!params.has('name')) {
+if (!params.has('name') || !params.has('room')) {
   window.location = `${window.origin}/index.html`
   throw new Error('El nombre es necesario')
 }
@@ -12,6 +12,7 @@ socket.on('connect', () => {
 
   const payload = {
     name: params.get('name'),
+    room: params.get('room'),
   }
 
   socket.emit('userConnected', payload, (resp) => {

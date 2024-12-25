@@ -8,6 +8,10 @@ export default class UserDataSource implements IUserDataSource {
     return USER_ENTITY
   }
 
+  async getAllByRoom(room: string): Promise<User[]> {
+    return USER_ENTITY.filter((user: User) => user.room === room)
+  }
+
   async add(user: User): Promise<void> {
     USER_ENTITY.push(user)
   }
