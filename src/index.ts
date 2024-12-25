@@ -1,8 +1,8 @@
-import ENVIROMENT from './config/enviroment'
 import App from './app'
-import connectDB from './config/database'
-
-connectDB(async () => {
-  const app = new App()
-  app.listen(ENVIROMENT.PORT)
-})
+import { ENVIROMENT } from './core/enviroment'
+// import router from './routes'
+;(async () => {
+  const app = new App(ENVIROMENT.PORT)
+  app.init()
+  app.start()
+})()
